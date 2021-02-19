@@ -27,7 +27,16 @@ class App extends Component {
       });
     }
   }
-
+  handleRestart=()=>{
+       this.setState({
+        currentTurn : "X",
+         board :  [
+          "", "", "", "", "", "", "", "", ""
+        ],
+        winner: null,
+        winnerPlayer : null,
+       })
+  }
   checkForWinner() {
     var currentTurn = this.state.currentTurn;
     var symbols = this.state.board;
@@ -52,7 +61,7 @@ class App extends Component {
         </div>
         {this.state.winner ? <h2 className="winner">{`Player ${this.state.winnerPlayer} won!!!!`}</h2> : null }
         {this.state.rounDraw ? <h2 className="winner">{`Draw!!!!`}</h2> : null }
-
+        <button className="btn btn-primary" onClick={this.handleRestart}>Restart</button>
       </div>
     )
   }
