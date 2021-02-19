@@ -1,4 +1,6 @@
-.board {
+body{
+   text-align: center;
+}.board {
   display: flex;
   width: 270px;
   height: 270px;
