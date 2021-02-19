@@ -21,9 +21,9 @@ class App extends Component {
       this.setState({
         board: this.state.board,
         winnerPlayer : this.state.currentTurn,
-        currentTurn: this.state.currentTurn === "X" ? "0" : "X",
-        winner: this.checkForWinner(),
+        currentTurn: this.state.currentTurn === "X" ? "0" : "X",      
         rounDraw : !this.state.board.includes(""),
+        winner: this.checkForWinner(),
       });
     }
   }
@@ -35,6 +35,7 @@ class App extends Component {
         ],
         winner: null,
         winnerPlayer : null,
+        rounDraw : this.state.board.includes(""),
        })
   }
   checkForWinner() {
@@ -60,7 +61,7 @@ class App extends Component {
             })}
         </div>
         {this.state.winner ? <h2 className="winner">{`Player ${this.state.winnerPlayer} won!!!!`}</h2> : null }
-        {this.state.rounDraw ? <h2 className="winner">{`Draw!!!!`}</h2> : null }
+        {(this.state.rounDraw && !this.state.winner) ? <h2 className="winner">{`Draw!!!!`}</h2> : null }
         <button className="btn btn-primary" onClick={this.handleRestart}>Restart</button>
       </div>
     )
